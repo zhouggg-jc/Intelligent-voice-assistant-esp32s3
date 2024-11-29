@@ -148,7 +148,7 @@ esp_err_t asr_proc(const void *audio_data, const int audio_len)
 {
     esp_http_client_config_t http_client_cfg = {
         .method = HTTP_METHOD_POST,
-        .url = "http://vop.baidu.com/server_api?dev_pid=1537&cuid=esp32s3&token=24.df0eca64673da4c8aaac5ece37809bd5.2592000.1734331487.282335-116177140",
+        .url = "http://vop.baidu.com/server_api?dev_pid=1537&cuid=esp32s3&token=替换为你的access_token",
         .event_handler = _http_event_handler,
     };
     asr_client = esp_http_client_init(&http_client_cfg);
@@ -174,7 +174,7 @@ esp_err_t llm_proc(const char *text)
 {
     esp_http_client_config_t http_client_cfg = {
         .method = HTTP_METHOD_POST,
-        .url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie_speed?access_token=24.b6d938b5c7e1a04620adf46e6ada0727.2592000.1735368515.282335-116433798",
+        .url = "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie_speed?access_token=替换为你的access_token",
         .event_handler = _http_event_handler,
         .crt_bundle_attach = esp_crt_bundle_attach,
         .timeout_ms = 8000,
@@ -209,7 +209,7 @@ esp_err_t tts_proc(const char *text)
     tts_client = esp_http_client_init(&http_client_cfg);
 
     char post_data[1024] = {0};
-    sprintf(post_data, "tex=%s&ctp=1&cuid=esp32s3&lan=zh&spd=8&pit=5&vol=3&per=0&aue=4&tok=24.f88bc1d9932705c668f8430268e38d87.2592000.1735111577.282335-116300862", text);
+    sprintf(post_data, "tex=%s&ctp=1&cuid=esp32s3&lan=zh&spd=8&pit=5&vol=3&per=0&aue=4&tok=替换为你的access_token", text);
     esp_http_client_set_post_field(tts_client, post_data, strlen(post_data));
 
     esp_err_t err = esp_http_client_perform(tts_client);
